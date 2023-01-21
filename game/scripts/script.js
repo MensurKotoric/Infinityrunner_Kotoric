@@ -1,10 +1,11 @@
 let player;
 let animation;
+let loadJumpingImage = false;
 
 function startGame() {
     gameArea.start();
     addKeyListener();
-    player = new drawPlayer(50, 50, "red", 10, 120);
+    player = new drawPlayer(100, 100, "styles/textures/Player_Stand.png", 10, 120);
     player.update();
     updateForAnimation();
 }
@@ -62,6 +63,10 @@ function updateForAnimation() {
     gameArea.clear();
     // for jumping
     if (activateJumping && spaceDown) {
+        if (!loadJumpingImage) {
+            loadJumpingImage = true;
+            player.image.src = "styles/textures/Player_Jump.png";
+        }
         if (player.y <= (gameArea.canvas.height - jumpHeight)) {
             currentJump = 0;
             activateJumping = false;
@@ -72,13 +77,16 @@ function updateForAnimation() {
     }
     // left right
     if (sDown) {
+        player.image.src = "styles/textures/Player_Stand.png";
         moveDown();
     }
     if (dDown) {
         moveRight();
+        player.image.src = "styles/textures/Player_Run.png";
     }
     if (aDown) {
         moveLeft();
+        player.image.src = "styles/textures/Player_Run.png";
     }
     animation = window.requestAnimationFrame(updateForAnimation);
 }

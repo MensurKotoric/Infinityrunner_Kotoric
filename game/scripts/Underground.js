@@ -13,4 +13,8 @@ function underground(width, height, color, x, y) {
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
 
     }
+    this.newPos = function() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+    }
 }

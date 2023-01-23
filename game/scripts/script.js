@@ -1,4 +1,6 @@
 let player;
+let background;
+let underground;
 let animation;
 let loadJumpingImage = false;
 
@@ -61,6 +63,12 @@ function addKeyListener() {
 
 function updateForAnimation() {
     gameArea.clear();
+    // movement underground
+    myUnderground.speedX = -1;
+    myUnderground.newPos();
+    myUnderground.update();
+    myBackground.newPos();
+    myBackground.update();
     // for jumping
     if (activateJumping && spaceDown) {
         if (!loadJumpingImage) {

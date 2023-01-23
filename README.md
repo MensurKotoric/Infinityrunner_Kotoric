@@ -4,22 +4,22 @@
 
 ## Description
 
-This Game is about a runner, who have to jump over objects. From time to time, the runner gets faster and there are objects in the sky, which have to be dodged.
-At the start, the runner gets 3 Hearts. If the runner collide with an object, one heart will be lost. 
-The runner is dynamic, means that the style is changed by moving. So there is a style for jumping, moving and standing still.  
-If all Hearts are lost, there will be a game over frame with the highscore. So the goal of the game is to get a high score. 
+This Game is about a runner, that has to jump over objects. From time to time, the runner gets faster and there are objects in the sky, which have to be dodged.
+At the start, the runner receives 3 Hearts. If the runner collides with an object, one heart will be lost. 
+The runner is dynamic, which means that the style is changed by moving. So there is a style for jumping, moving and standing still.  
+If all Hearts are lost, there will be a game over frame with the highscore. So the goal of the game is to reach the high score. 
 The Player can be controlled by pressing "a" or "d" for left and right, "s" for down and "space" for jumping.
 
 
 ## Installation
 
-The only thing that have to be done, is to clone the git project.
-All Files are in the git project. The scripts using relatives paths, so there shouldn't be problems with loading the files. 
+The only thing that has to be done, is to clone the git project.
+All Files are in the git project. The scripts are using relatives paths, so there shouldn't be any problems regarding loading the files. 
 
 ## Project Structure
 
-The Game is written in htlm, css and javascript.
-Each functionality is separated in different scripts. For example, the movement script, gravity script, animation script for the player.
+The Game is written in HTML, CSS and JavaScript.
+Each functionality is separated in different scripts. For example the movement script, gravity script and the animation script for the player.
 Also, the textures are separated. 
 
 ## Visuals

@@ -1,11 +1,13 @@
 let player;
 let animation;
 let loadJumpingImage = false;
+let testObstacle;
 
 function startGame() {
     gameArea.start();
     addKeyListener();
     player = new drawPlayer(100, 100, "styles/textures/Player_Stand.png", 10, 120);
+    testObstacle = new drawObstacle(600, gameArea.canvas.height - 20, 20,20 ,"red");
     player.update();
     updateForAnimation();
 }
@@ -88,6 +90,7 @@ function updateForAnimation() {
         moveLeft();
         player.image.src = "styles/textures/Player_Run.png";
     }
+    testObstacle.move(-1,0);
     animation = window.requestAnimationFrame(updateForAnimation);
 }
 

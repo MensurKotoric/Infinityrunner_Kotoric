@@ -10,7 +10,7 @@ let jumpSpeed = 0.5;
 let activateJumping = false;
 let spaceDown = false;
 let spaceDownTemp = false;
-let jumpXValue = 2;
+let jumpXValue = 5;
 
 function movePlayer(stepX, stepY) {
     if (player.x + stepX >= 0 && player.y + stepY >= 0 && player.x + player.width + stepX <= gameArea.canvas.width && player.y + player.height + stepY <= gameArea.canvas.height) {

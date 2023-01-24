@@ -26,7 +26,15 @@ function initialGenerate(offsetX) {
         xArray.push(x);
     }
     for (let i = 0; i < amountOfObstacles; i++) {
-        obstacles.push(new drawObstacle(xArray[i], heightOfObstacles, size, size, "red"));
+        let imageSrc = "";
+        let number = Math.round(Math.random() * 3) + 1;
+        switch (number){
+            case 1: imageSrc = "styles/textures/cactus.png"; break;
+            case 2: imageSrc = "styles/textures/chest.png"; break;
+            case 3: imageSrc = "styles/textures/stone.png"; break;
+            case 4: imageSrc = "styles/textures/treeTrunk.png"; break;
+        }
+        obstacles.push(new drawObstacle(xArray[i], heightOfObstacles, size, size, imageSrc));
     }
 }
 
@@ -46,5 +54,13 @@ function checkOverlapping(x1, size1, x2, size2) {
 
 function genObstacleRandom(index, offsetX) {
     let x = gameArea.canvas.width - offsetX + Math.round(Math.random() * offsetX);
-    obstacles[index] = new drawObstacle(x, heightOfObstacles, size, size, "red");
+    let imageSrc = "";
+    let number = Math.round(Math.random() * 3) + 1;
+    switch (number){
+        case 1: imageSrc = "styles/textures/cactus.png"; break;
+        case 2: imageSrc = "styles/textures/chest.png"; break;
+        case 3: imageSrc = "styles/textures/stone.png"; break;
+        case 4: imageSrc = "styles/textures/treeTrunk.png"; break;
+    }
+    obstacles[index] = new drawObstacle(x, heightOfObstacles, size, size, imageSrc);
 }

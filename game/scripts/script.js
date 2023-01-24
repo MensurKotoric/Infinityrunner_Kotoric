@@ -5,7 +5,7 @@ let loadJumpingImage = false;
 function startGame() {
     gameArea.start();
     addKeyListener();
-    initialGenerate(200);
+    initialGenerate(600);
     player = new drawPlayer(100, 100, "styles/textures/Player_Stand.png", 10, 120);
     player.update();
     updateForAnimation();
@@ -89,7 +89,7 @@ function updateForAnimation() {
         moveLeft();
         player.image.src = "styles/textures/Player_Run.png";
     }
-    moveObstacles(-1,0);
+    moveObstacles(-2,0);
     animation = window.requestAnimationFrame(updateForAnimation);
 }
 

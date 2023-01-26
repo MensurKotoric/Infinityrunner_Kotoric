@@ -5,7 +5,7 @@ let speed = 2;
 
 // for jumping
 let currentJump = 0;
-let jumpHeight = 300;
+let jumpHeight = 350;
 let jumpSpeed = 0.7;
 let activateJumping = false;
 let spaceDown = false;

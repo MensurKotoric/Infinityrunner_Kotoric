@@ -1,10 +1,11 @@
 let gravity = 1;
 let currentGravity = 0;
 let isGrounded = false;
+let defaultHeigthOfPlayer = 75;
 
 function gravityMovement() {
     currentGravity += gravity;
-    if (player.y + currentGravity >= gameArea.canvas.height - player.height) {
+    if (player.y + currentGravity >= gameArea.canvas.height - player.height - defaultHeigthOfPlayer) {
         currentGravity = 0;
         isGrounded = true;
         if (!aDown && !dDown) {

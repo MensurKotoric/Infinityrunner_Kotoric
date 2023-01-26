@@ -1,17 +1,17 @@
 let player;
-let background;
-let underground;
+let myBackground;
+let myUnderground;
 let animation;
 let loadJumpingImage = false;
-let initedBackground = false;
 
 function startGame() {
     gameArea.start();
     addKeyListener();
-    player = new drawPlayer(100, 100, "styles/textures/Player_Stand.png", 10, 120);
+    myBackground = new background(1870,920,"styles/textures/background.jpg",0,0);
+    myUnderground = new underground(1870, 120, "styles/textures/textures_ground.png", 0,800);
+    player = new drawPlayer(100, 100, "styles/textures/Player_Stand.png", 0, 120);
     player.update();
     updateForAnimation();
-    initBackground();
 }
 
 let gameArea = {
@@ -63,20 +63,10 @@ function addKeyListener() {
     })
 }
 
-function initBackground(){
-    gameArea.clear();
-    myUnderground.speedX = -1;
-    myUnderground.newPos();
-    myUnderground.update();
-    if(!initedBackground){
-        initedBackground = true;
-        myBackground.newPos();
-    }
-    window.requestAnimationFrame(initBackground());
-}
-
 function updateForAnimation() {
     gameArea.clear();
+    myBackground.update();
+    myUnderground.update();
     // for jumping
     if (activateJumping && spaceDown) {
         if (!loadJumpingImage) {

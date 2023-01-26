@@ -4,7 +4,7 @@ function background(width, height, path, x, y) {
     this.x = x;
     this.y = y;
     this.image = new Image();
-    this.image.src = this.path;
+    this.image.src = path;
     this.update = function(){
         let ctx = gameArea.context;
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);

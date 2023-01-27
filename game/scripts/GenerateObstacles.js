@@ -2,6 +2,8 @@ let amountOfObstacles = 3;
 let obstacles = [];
 const size = 50;
 let heightOfObstacles = 0;
+let speedOfObstacles = 3;
+let counter = 0;
 
 function initialGenerate(offsetX) {
     // store all x values
@@ -62,5 +64,7 @@ function genObstacleRandom(index, offsetX) {
         case 3: imageSrc = "styles/textures/stone.png"; break;
         case 4: imageSrc = "styles/textures/treeTrunk.png"; break;
     }
+    counter++;
+    speedOfObstacles += Math.round(counter / 20);
     obstacles[index] = new drawObstacle(x, heightOfObstacles, size, size, imageSrc);
 }

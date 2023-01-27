@@ -1,9 +1,9 @@
-let playerPosX = 100;
+let playerPosX = 200;
 
 let dDown = false;
 let aDown = false;
 let sDown = false;
-let speed = 2;
+let speed = 4;
 
 // for jumping
 let currentJump = 0;
@@ -15,6 +15,7 @@ let spaceDownTemp = true; // low active
 let jumpXValue = 5;
 let defaultHeightOfPlayer = 75;
 let beforeJumpX = 0;
+let startJumping = false;
 
 // for checking if moving
 let tempX = 0;

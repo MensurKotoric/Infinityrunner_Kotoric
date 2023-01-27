@@ -63,19 +63,6 @@ function addKeyListener() {
 function updateForAnimation() {
     gameArea.clear();
     // for jumping
-    if (activateJumping && spaceDown) {
-        if (!loadJumpingImage) {
-            loadJumpingImage = true;
-            player.image.src = "styles/textures/Player_Jump.png";
-        }
-        if (player.y <= (gameArea.canvas.height - jumpHeight)) {
-            currentJump = 0;
-            activateJumping = false;
-        }
-        jump();
-    } else {
-        gravityMovement();
-    }
     // left right
     if (sDown) {
         player.image.src = "styles/textures/Player_Stand.png";
@@ -89,7 +76,24 @@ function updateForAnimation() {
         moveLeft();
         player.image.src = "styles/textures/Player_Run.png";
     }
-    moveObstacles(-2,0);
+    if (activateJumping && spaceDown) {
+        if (!loadJumpingImage) {
+            loadJumpingImage = true;
+            player.image.src = "styles/textures/Player_Jump.png";
+        }
+        if (player.y <= (gameArea.canvas.height - jumpHeight)) {
+            currentJump = 0;
+            activateJumping = false;
+        }
+        jump();
+    } else {
+        gravityMovement();
+    }
+    if(!checkIfMove()){
+        player.image.src = "styles/textures/Player_Stand.png";
+    }
+    player.update();
+    moveObstacles(-2, 0);
     animation = window.requestAnimationFrame(updateForAnimation);
 }
 

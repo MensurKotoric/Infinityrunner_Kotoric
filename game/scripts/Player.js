@@ -9,4 +9,10 @@ function drawPlayer(width, height, image, x,y) {
         let panel = gameArea.context;
         panel.drawImage(this.image, this.x,this.y,this.width,this.height);
     }
+    this.movePlayer = function (stepX, stepY){
+        if (this.x + stepX >= 0 && this.y + stepY >= 0 && this.x + this.width + stepX <= gameArea.canvas.width && this.y + this.height + stepY <= gameArea.canvas.height - defaultHeightOfPlayer) {
+            this.x += stepX;
+            this.y += stepY;
+        }
+    }
 }

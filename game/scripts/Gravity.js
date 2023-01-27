@@ -1,10 +1,10 @@
-let gravity = 1;
+let gravity = 2;
 let currentGravity = 0;
 let isGrounded = false;
 
 function gravityMovement() {
     currentGravity += gravity;
-    if (player.y + currentGravity >= gameArea.canvas.height - player.height) {
+    if (player.y + player.height + currentGravity >= gameArea.canvas.height - defaultHeightOfPlayer) {
         currentGravity = 0;
         isGrounded = true;
         if (!aDown && !dDown) {
@@ -16,5 +16,5 @@ function gravityMovement() {
             spaceDownTemp = true;
         }
     }
-    movePlayer(0, currentGravity);
+    player.movePlayer(0, currentGravity);
 }

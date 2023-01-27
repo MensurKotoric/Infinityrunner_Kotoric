@@ -5,7 +5,7 @@ let heightOfObstacles = 0;
 
 function initialGenerate(offsetX) {
     // store all x values
-    heightOfObstacles = gameArea.canvas.height - size;
+    heightOfObstacles = gameArea.canvas.height - size - defaultHeightOfPlayer;
     let xArray = [];
     let counter = 0;
     for (let i = 0; i < amountOfObstacles; i++) {

@@ -2,28 +2,27 @@ let amountOfObstacles = 3;
 let obstacles = [];
 const size = 50;
 let heightOfObstacles = 0;
-let speedOfObstacles = 3;
-let counter = 0;
-
+let speedOfObstacles = 4;
+let counterOfObstacles = 0;
+let distanceBetweenObstacles = 150;
 function initialGenerate(offsetX) {
-    // store all x values
-    heightOfObstacles = gameArea.canvas.height - size - defaultHeightOfPlayer;
     let xArray = [];
-    let counter = 0;
+    obstacles = [];
+    heightOfObstacles = gameArea.canvas.height - size - defaultHeightOfPlayer;
     for (let i = 0; i < amountOfObstacles; i++) {
         let x = gameArea.canvas.width - offsetX + Math.round(Math.random() * offsetX);
         let check = false;
         while (!check) {
             check = true;
-            for (let j = 0; j < counter; j++) {
+            for (let j = 0; j < xArray.length; j++) {
                 if (checkOverlapping(x, size, xArray[j], size)) {
                     check = false;
+                    break;
                 }
             }
             if (!check) {
                 x = gameArea.canvas.width - offsetX + Math.round(Math.random() * offsetX);
             }
-            counter++;
         }
         xArray.push(x);
     }
@@ -51,11 +50,27 @@ function moveObstacles(stepX, stepY) {
 }
 
 function checkOverlapping(x1, size1, x2, size2) {
-    return (x1 >= x2 && x1 <= x2 + size2) || (x1 + size1 >= x2 && x1 + size1 <= x2 + size2)
+    if(x1 < x2){
+        return x1 + size1 + distanceBetweenObstacles >= x2;
+    } else if(x1 > x2){
+        return x1 - distanceBetweenObstacles <= x2 + size2;
+    }
 }
-
 function genObstacleRandom(index, offsetX) {
     let x = gameArea.canvas.width - offsetX + Math.round(Math.random() * offsetX);
+    let check = false;
+    while (!check) {
+        check = true;
+        for (let j = 0; j < obstacles.length; j++) {
+            if (checkOverlapping(x, size, obstacles[j].x, size)) {
+                check = false;
+                break;
+            }
+        }
+        if (!check) {
+            x = gameArea.canvas.width - offsetX + Math.round(Math.random() * offsetX);
+        }
+    }
     let imageSrc = "";
     let number = Math.round(Math.random() * 3) + 1;
     switch (number){
@@ -64,7 +79,10 @@ function genObstacleRandom(index, offsetX) {
         case 3: imageSrc = "styles/textures/stone.png"; break;
         case 4: imageSrc = "styles/textures/treeTrunk.png"; break;
     }
-    counter++;
-    speedOfObstacles += Math.round(counter / 20);
     obstacles[index] = new drawObstacle(x, heightOfObstacles, size, size, imageSrc);
+    counterOfObstacles++;
+    if(counterOfObstacles % 30 == 0){
+        speedOfObstacles += counterOfObstacles / 15;
+        speed += counterOfObstacles / 15 - 1;
+    }
 }

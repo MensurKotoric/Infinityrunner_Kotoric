@@ -3,7 +3,7 @@ let playerPosX = 200;
 let dDown = false;
 let aDown = false;
 let sDown = false;
-let speed = 4;
+let speed = 3;
 
 // for jumping
 let currentJump = 0;

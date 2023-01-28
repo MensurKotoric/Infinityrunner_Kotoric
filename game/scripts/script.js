@@ -6,7 +6,7 @@ function startGame() {
     gameArea.start();
     addKeyListener();
     initialGenerate(600);
-    player = new drawPlayer(100, 100, "styles/textures/Player_Stand.png", playerPosX, 120);
+    player = new drawPlayer(100, 100, "styles/textures/Player_Run.png", playerPosX, 120);
     player.update();
     updateForAnimation();
 }

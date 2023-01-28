@@ -1,15 +1,23 @@
-let player;
-let animation;
+let player; // store the player object
+let animation; // store the animation
 let loadJumpingImage = false;
 
+/**
+ * Start the Game
+ */
 function startGame() {
     gameArea.start();
     addKeyListener();
-    player = new drawPlayer(100, 100, "styles/textures/Player_Stand.png", 10, 120);
+    initialGenerate(600);
+    player = new PlayerObject(100, 100, "styles/textures/Player_Run.png", playerPosX, 120);
     player.update();
     updateForAnimation();
 }
 
+/**
+ *  Object of the game area.
+ * @type {{canvas: HTMLCanvasElement, start: gameArea.start, clear: gameArea.clear}}
+ */
 let gameArea = {
     canvas: document.createElement("canvas"),
     start: function () {
@@ -24,6 +32,9 @@ let gameArea = {
     }
 }
 
+/**
+ * This Method implement a KeyListener
+ */
 function addKeyListener() {
     window.addEventListener("keydown", function (event) {
         switch (event.key) {
@@ -53,20 +64,25 @@ function addKeyListener() {
                 sDown = false;
                 break;
             case " ":
-                spaceDownTemp = false;
+                spaceUpTemp = true;
                 break;
         }
     })
 }
 
+/**
+ * This function is used for the animation.
+ */
 function updateForAnimation() {
     gameArea.clear();
-    // for jumping
+    // jumping
     if (activateJumping && spaceDown) {
         if (!loadJumpingImage) {
             loadJumpingImage = true;
             player.image.src = "styles/textures/Player_Jump.png";
+            startJumping = true;
         }
+        // player reached jumpHeight
         if (player.y <= (gameArea.canvas.height - jumpHeight)) {
             currentJump = 0;
             activateJumping = false;
@@ -75,22 +91,14 @@ function updateForAnimation() {
     } else {
         gravityMovement();
     }
-    // left right
-    if (sDown) {
-        player.image.src = "styles/textures/Player_Stand.png";
-        moveDown();
-    }
-    if (dDown) {
-        moveRight();
-        player.image.src = "styles/textures/Player_Run.png";
-    }
-    if (aDown) {
-        moveLeft();
-        player.image.src = "styles/textures/Player_Run.png";
-    }
+    player.update();
+    moveObstacles(-speedOfObstacles, 0);
     animation = window.requestAnimationFrame(updateForAnimation);
 }
 
+/**
+ * Stop the current animation
+ */
 function stopAnimation() {
     window.cancelAnimationFrame(animation);
 }

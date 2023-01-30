@@ -1,5 +1,10 @@
 let player; // store the player object
 let animation; // store the animation
+let player;
+let myBackground;
+let myUnderground;
+let underground2;
+let animation;
 let loadJumpingImage = false;
 
 /**
@@ -10,6 +15,10 @@ function startGame() {
     addKeyListener();
     initialGenerate(600);
     player = new PlayerObject(100, 100, "styles/textures/Player_Run.png", playerPosX, 120);
+    myBackground = new background(1870,920,"styles/textures/background.jpg",0,0);
+    myUnderground = new underground(1870, 120, "styles/textures/textures_ground.png", 0,800);
+    underground2 = new underground(1870, 120, "styles/textures/textures_ground.png", 1870,800)
+    player = new drawPlayer(100, 100, "styles/textures/Player_Stand.png", 0, 120);
     player.update();
     updateForAnimation();
 }
@@ -64,7 +73,7 @@ function addKeyListener() {
                 sDown = false;
                 break;
             case " ":
-                spaceUpTemp = true;
+                spaceDownTemp = false;
                 break;
         }
     })
@@ -76,6 +85,12 @@ function addKeyListener() {
 function updateForAnimation() {
     gameArea.clear();
     // jumping
+    myBackground.update();
+    underground2.newPos();
+    myUnderground.newPos();
+    underground2.update();
+    myUnderground.update();
+    // for jumping
     if (activateJumping && spaceDown) {
         if (!loadJumpingImage) {
             loadJumpingImage = true;

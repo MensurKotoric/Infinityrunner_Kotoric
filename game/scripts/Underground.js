@@ -1,7 +1,7 @@
 function underground(width, height, path, x, y) {
     this.width = width;
     this.height = height;
-    this.speedX = -2;
+    this.speedX = -speedOfObstacles;
     this.speedY = 0;
     this.x = x;
     this.y = y;
@@ -13,10 +13,11 @@ function underground(width, height, path, x, y) {
 
     }
     this.newPos = function () {
+        this.speedX = -speedOfObstacles;
         this.x += this.speedX;
         //this.y += this.speedY;
-        if (this.x + this.width == 0) {
-            this.x = 1870;
+        if (this.x <= -this.width) {
+            this.x = amountOfUndergrounds * this.width - this.width;
         }
     }
 }

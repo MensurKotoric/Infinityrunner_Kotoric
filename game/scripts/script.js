@@ -10,6 +10,7 @@ function startGame() {
     gameArea.start();
     addKeyListener();
     initialGenerate(600);
+    initialHearts();
     player = new PlayerObject(100, 100, "styles/textures/Player_Run.png", playerPosX, 120);
     myBackground = new background(1870,920,"styles/textures/background.jpg",0,0);
     initialUndergrounds();
@@ -98,6 +99,7 @@ function updateForAnimation() {
     }
     player.update();
     moveObstacles(-speedOfObstacles, 0);
+    drawHearts();
     animation = window.requestAnimationFrame(updateForAnimation);
 }
 

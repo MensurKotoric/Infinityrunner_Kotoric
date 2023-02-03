@@ -2,6 +2,8 @@ let player; // store the player object
 let animation; // store the animation
 let loadJumpingImage = false;
 let myBackground;
+let underground1;
+let underground2;
 
 /**
  * Start the Game
@@ -9,10 +11,11 @@ let myBackground;
 function startGame() {
     gameArea.start();
     addKeyListener();
-    initialGenerate(600);
+    initialGenerate(800);
     player = new PlayerObject(100, 100, "styles/textures/Player_Run.png", playerPosX, 120);
     myBackground = new background(1870,920,"styles/textures/background.jpg",0,0);
-    initialUndergrounds();
+    underground1 = new underground(1870,75,"styles/textures/textures_ground_v2.png", 0,845);
+    underground2 = new underground(1870,75,"styles/textures/textures_ground_v2.png", 1850,845);
     player.update();
     updateForAnimation();
 }
@@ -79,7 +82,10 @@ function addKeyListener() {
 function updateForAnimation() {
     gameArea.clear();
     myBackground.update();
-    moveUndergrounds();
+    underground1.newPos();
+    underground2.newPos();
+    underground1.update();
+    underground2.update();
     // jumping
     if (activateJumping && spaceDown) {
         if (!loadJumpingImage) {
@@ -98,6 +104,7 @@ function updateForAnimation() {
     }
     player.update();
     moveObstacles(-speedOfObstacles, 0);
+    detectCollisions();
     animation = window.requestAnimationFrame(updateForAnimation);
 }
 

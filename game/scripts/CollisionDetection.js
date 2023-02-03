@@ -1,7 +1,9 @@
+const sensitivity = 15;
+
 function detectCollisions(){
-    for(let i = 0; i < obstacles.length; i++){
-        if(checkCollision(player.x,player.y,player.size,player.size,obstacles[i].x,obstacles[i].y,obstacles[i].size,obstacles[i].size)){
-            genObstacleRandom(i, 600);
+    for(let i = 0; i < amountOfObstacles; i++){
+        if(checkCollision(player.x - sensitivity,player.y - sensitivity,player.width - sensitivity,player.height - sensitivity,obstacles[i].x,obstacles[i].y,obstacles[i].width,obstacles[i].height)){
+            genObstacleRandom(i, 700);
         }
     }
 }

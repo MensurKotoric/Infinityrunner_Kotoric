@@ -57,7 +57,7 @@ function initialGenerate(offsetX) {
 function moveObstacles(stepX, stepY) {
     for (let i = 0; i < amountOfObstacles; i++) {
         if (obstacles[i].check()) {
-            genObstacleRandom(i, 600);
+            genObstacleRandom(i, 700);
         } else {
             obstacles[i].move(stepX, stepY);
         }
@@ -77,6 +77,8 @@ function checkOverlapping(x1, size1, x2, size2) {
         return x1 + size1 + distanceBetweenObstacles >= x2;
     } else if(x1 > x2){
         return x1 - distanceBetweenObstacles <= x2 + size2;
+    } else {
+        return true;
     }
 }
 

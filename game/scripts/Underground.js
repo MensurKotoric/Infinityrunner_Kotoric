@@ -15,9 +15,8 @@ function underground(width, height, path, x, y) {
     this.newPos = function () {
         this.speedX = -speedOfObstacles;
         this.x += this.speedX;
-        //this.y += this.speedY;
-        if (this.x <= -this.width) {
-            this.x = amountOfUndergrounds * this.width - this.width;
+        if (this.x <= -this.width + 30) {
+            this.x = this.width - 30;
         }
     }
 }

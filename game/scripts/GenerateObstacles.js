@@ -57,7 +57,7 @@ function initialGenerate(offsetX) {
 function moveObstacles(stepX, stepY) {
     for (let i = 0; i < amountOfObstacles; i++) {
         if (obstacles[i].check()) {
-            genObstacleRandom(i, 700);
+            genObstacleRandom(i, 800);
         } else {
             obstacles[i].move(stepX, stepY);
         }

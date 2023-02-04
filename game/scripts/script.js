@@ -4,7 +4,7 @@ let loadJumpingImage = false;
 let myBackground;
 let underground1;
 let underground2;
-
+let scoreObj;
 
 /**
  * Start the Game
@@ -18,6 +18,7 @@ function startGame() {
     myBackground = new background(1870, 920, "styles/textures/background.jpg", 0, 0);
     underground1 = new underground(1870, 75, "styles/textures/textures_ground_v2.png", 0, 845);
     underground2 = new underground(1870, 75, "styles/textures/textures_ground_v2.png", 1850, 845);
+    scoreObj = new score("30px", "Arial", "white", 1670, 40, "text");
     player.update();
     updateForAnimation();
 }
@@ -109,6 +110,7 @@ function updateForAnimation() {
         moveObstacles(-speedOfObstacles, 0);
         detectCollisions();
         drawHearts();
+        showScore();
     } else {
         drawGameOverScreen();
         newGameButtonClicked();

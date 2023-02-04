@@ -24,7 +24,8 @@ Each functionality is separated in different scripts. For example the movement s
 Also, the textures are separated. 
 
 ## Visuals
-
+![OverView1.png](./OverView1.png)
+![Overview2.png](./Overview2.png)
 
 ## Project status
 The project is still in progress.

@@ -13,9 +13,9 @@ function startGame() {
     addKeyListener();
     initialGenerate(800);
     player = new PlayerObject(100, 100, "styles/textures/Player_Run.png", playerPosX, 120);
-    myBackground = new background(1870,920,"styles/textures/background.jpg",0,0);
-    underground1 = new underground(1870,75,"styles/textures/textures_ground_v2.png", 0,845);
-    underground2 = new underground(1870,75,"styles/textures/textures_ground_v2.png", 1850,845);
+    myBackground = new background(1870, 920, "styles/textures/background.jpg", 0, 0);
+    underground1 = new underground(1870, 75, "styles/textures/textures_ground_v2.png", 0, 845);
+    underground2 = new underground(1870, 75, "styles/textures/textures_ground_v2.png", 1850, 845);
     player.update();
     updateForAnimation();
 }
@@ -82,29 +82,34 @@ function addKeyListener() {
 function updateForAnimation() {
     gameArea.clear();
     myBackground.update();
-    underground1.newPos();
-    underground2.newPos();
-    underground1.update();
-    underground2.update();
-    // jumping
-    if (activateJumping && spaceDown) {
-        if (!loadJumpingImage) {
-            loadJumpingImage = true;
-            player.image.src = "styles/textures/Player_Jump.png";
-            startJumping = true;
+    if (!gameOver) {
+        underground1.newPos();
+        underground2.newPos();
+        underground1.update();
+        underground2.update();
+        // jumping
+        if (activateJumping && spaceDown) {
+            if (!loadJumpingImage) {
+                loadJumpingImage = true;
+                player.image.src = "styles/textures/Player_Jump.png";
+                startJumping = true;
+            }
+            // player reached jumpHeight
+            if (player.y <= (gameArea.canvas.height - jumpHeight)) {
+                currentJump = 0;
+                activateJumping = false;
+            }
+            jump();
+        } else {
+            gravityMovement();
         }
-        // player reached jumpHeight
-        if (player.y <= (gameArea.canvas.height - jumpHeight)) {
-            currentJump = 0;
-            activateJumping = false;
-        }
-        jump();
+        player.update();
+        moveObstacles(-speedOfObstacles, 0);
+        detectCollisions();
     } else {
-        gravityMovement();
+        drawGameOverScreen();
+        newGameButtonClicked();
     }
-    player.update();
-    moveObstacles(-speedOfObstacles, 0);
-    detectCollisions();
     animation = window.requestAnimationFrame(updateForAnimation);
 }
 

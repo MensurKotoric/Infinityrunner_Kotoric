@@ -113,6 +113,7 @@ function updateForAnimation() {
         drawGameOverScreen();
         newGameButtonClicked();
     }
+
     animation = window.requestAnimationFrame(updateForAnimation);
 }
 

@@ -1,12 +1,11 @@
 let hearts = [];
-let amount = 3;
+let amount = 5;
 let startPosX = 10;
 let startPosY = 10;
 let distance = 20;
 let width = 50;
 let height = 35;
 let path = "styles/textures/heart.png";
-let gameOver = false;
 
 function initialHearts(){
     for(let i = 0; i < amount;i++){

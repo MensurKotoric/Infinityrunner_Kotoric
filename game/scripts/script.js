@@ -57,7 +57,9 @@ function addKeyListener() {
                 sDown = true;
                 break;
             case " ":
-                spaceDown = true;
+                if (player.x < gameArea.canvas.width / 2) {
+                    spaceDown = true;
+                }
                 break;
         }
     })
@@ -73,7 +75,9 @@ function addKeyListener() {
                 sDown = false;
                 break;
             case " ":
-                spaceUpTemp = true;
+                if (player.x < gameArea.canvas.width / 2) {
+                    spaceUpTemp = true;
+                }
                 break;
         }
     })

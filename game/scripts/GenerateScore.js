@@ -1,6 +1,5 @@
 let frameCounter = 0;
 let currentScore = 0;
-let highScore = 0;
 
 function showScore(){
     frameCounter++;
@@ -9,8 +8,9 @@ function showScore(){
         currentScore++;
     }
     scoreObj.text = "Score: " + currentScore;
-    if(currentScore >= highScore){
-        highScore = currentScore;
+    if(currentScore >= localStorage.getItem('highScore')){
+        localStorage.setItem('highScore', currentScore);
+        //window.alert(localStorage.getItem('highScore'));
     }
     scoreObj.update();
 }

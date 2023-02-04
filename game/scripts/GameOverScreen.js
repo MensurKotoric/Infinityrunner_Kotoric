@@ -5,7 +5,7 @@ function drawGameOverScreen() {
     ctx.font = "180px Stencil";
     ctx.fillText("Game Over !!!", gameArea.canvas.width / 2 - 2 * gameArea.canvas.width / 7, gameArea.canvas.height / 2 - 200);
     ctx.font = "120px Brush Script MT";
-    ctx.fillText("HighScore: " + highScore, gameArea.canvas.width / 2 - gameArea.canvas.width / 8, gameArea.canvas.height / 2);
+    ctx.fillText("HighScore: " + localStorage.getItem('highScore'), gameArea.canvas.width / 2 - gameArea.canvas.width / 8, gameArea.canvas.height / 2);
     ctx.fillText("CurrentScore: " + currentScore, gameArea.canvas.width / 2 - gameArea.canvas.width / 6, gameArea.canvas.height / 2 + gameArea.canvas.height / 7);
     ctx.fillStyle = "green";
     ctx.strokeStyle = "white";

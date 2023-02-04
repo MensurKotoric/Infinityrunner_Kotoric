@@ -1,23 +1,16 @@
 let frameCounter = 0;
-let timer = 0;
+let currentScore = 0;
+let highScore = 0;
 
 function showScore(){
     frameCounter++;
     // increase timer every second (50Hz --> %50)
     if(frameCounter%50 == 0){
-        timer++;
+        currentScore++;
     }
-    scoreObj.text = "Score: " + timer;
-    if(gameOver == true){
-        timer = 0;
+    scoreObj.text = "Score: " + currentScore;
+    if(currentScore >= highScore){
+        highScore = currentScore;
     }
     scoreObj.update();
 }
-/*
-function resetScore(){
-    if(gameOver == true){
-        timer = 0;
-    }
-}
-
- */

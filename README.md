@@ -8,6 +8,7 @@ This Game is about a runner, that has to jump over objects. From time to time, t
 At the start, the runner receives 5 Hearts. If the runner collides with an object, one heart will be lost. 
 The runner is dynamic, which means that the style is changed by moving. So there is a style for jumping and moving.
 If all Hearts are lost, there will be a game over frame with the highscore. So the goal of the game is to reach the high score. 
+The high score is being saved with local storage, which helps us to save the score with no expiration date, so the score will even be saved after closing the browser.
 The Player can be controlled by pressing "space" for jumping.
 
 

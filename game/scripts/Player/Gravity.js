@@ -18,7 +18,7 @@ function gravityMovement() {
         // reset the position of the player to the start position after a jump.
         if(startJumping){
             if(player.x >= playerPosX - speed){
-                player.movePlayer(-speed, 0);
+                player.move(-speed, 0);
             } else {
                 startJumping = false;
             }
@@ -30,5 +30,5 @@ function gravityMovement() {
             activateJumping = true;
         }
     }
-    player.movePlayer(0, currentGravity);
+    player.move(0, currentGravity);
 }

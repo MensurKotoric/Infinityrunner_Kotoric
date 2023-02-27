@@ -19,6 +19,6 @@ let startJumping = false; // check if the player is jumping
 function jump() {
     isGrounded = false;
     currentJump -= jumpSpeed;
-    player.movePlayer(jumpXValue, currentJump);
+    player.move(jumpXValue, currentJump);
 }
 

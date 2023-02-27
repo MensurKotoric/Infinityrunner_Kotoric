@@ -14,7 +14,7 @@ function startGame() {
     addKeyListener();
     initialGenerate(800);
     initialHearts();
-    player = new PlayerObject(100, 100, "styles/textures/Player_Run.png", playerPosX, 120);
+    player = new Player(100, 100, "styles/textures/Player_Run.png", playerPosX, 120);
     myBackground = new background(1870, 920, "styles/textures/background.jpg", 0, 0);
     underground1 = new underground(1870, 75, "styles/textures/textures_ground_v2.png", 0, 845);
     underground2 = new underground(1870, 75, "styles/textures/textures_ground_v2.png", 1850, 845);

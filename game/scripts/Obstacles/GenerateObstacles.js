@@ -39,13 +39,21 @@ function initialGenerate(offsetX) {
     for (let i = 0; i < amountOfObstacles; i++) {
         let imageSrc = "";
         let number = Math.round(Math.random() * 3) + 1;
-        switch (number){
-            case 1: imageSrc = "styles/textures/cactus.png"; break;
-            case 2: imageSrc = "styles/textures/chest.png"; break;
-            case 3: imageSrc = "styles/textures/stone.png"; break;
-            case 4: imageSrc = "styles/textures/treeTrunk.png"; break;
+        switch (number) {
+            case 1:
+                imageSrc = "styles/textures/cactus.png";
+                break;
+            case 2:
+                imageSrc = "styles/textures/chest.png";
+                break;
+            case 3:
+                imageSrc = "styles/textures/stone.png";
+                break;
+            case 4:
+                imageSrc = "styles/textures/treeTrunk.png";
+                break;
         }
-        obstacles.push(new ObstacleObject(xArray[i], heightOfObstacles, size, size, imageSrc));
+        obstacles.push(new Obstacle(xArray[i], heightOfObstacles, size, size, imageSrc));
     }
 }
 
@@ -73,9 +81,9 @@ function moveObstacles(stepX, stepY) {
  * @returns {boolean}
  */
 function checkOverlapping(x1, size1, x2, size2) {
-    if(x1 < x2){
+    if (x1 < x2) {
         return x1 + size1 + distanceBetweenObstacles >= x2;
-    } else if(x1 > x2){
+    } else if (x1 > x2) {
         return x1 - distanceBetweenObstacles <= x2 + size2;
     } else {
         return true;
@@ -106,17 +114,32 @@ function genObstacleRandom(index, offsetX) {
     // generate a random obstacle
     let imageSrc = "";
     let number = Math.round(Math.random() * 3) + 1;
-    switch (number){
-        case 1: imageSrc = "styles/textures/cactus.png"; break;
-        case 2: imageSrc = "styles/textures/chest.png"; break;
-        case 3: imageSrc = "styles/textures/stone.png"; break;
-        case 4: imageSrc = "styles/textures/treeTrunk.png"; break;
+    switch (number) {
+        case 1:
+            imageSrc = "styles/textures/cactus.png";
+            break;
+        case 2:
+            imageSrc = "styles/textures/chest.png";
+            break;
+        case 3:
+            imageSrc = "styles/textures/stone.png";
+            break;
+        case 4:
+            imageSrc = "styles/textures/treeTrunk.png";
+            break;
     }
-    obstacles[index] = new ObstacleObject(x, heightOfObstacles, size, size, imageSrc);
+    obstacles[index] = new Obstacle(x, heightOfObstacles, size, size, imageSrc);
     counterOfObstacles++;
     // change the speed of the player and of the obstacles regarding of the "counterOfObstacles".
-    if(counterOfObstacles % 30 == 0){
+    if (counterOfObstacles % 30 == 0) {
         speedOfObstacles += counterOfObstacles / 15;
         speed += counterOfObstacles / 15 - 1;
     }
 }
+
+function drawObstacles() {
+    for (let i = 0; i < amountOfObstacles; i++) {
+        obstacles[i].update();
+    }
+}
+

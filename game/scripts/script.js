@@ -112,6 +112,7 @@ function updateForAnimation() {
         }
         player.update();
         moveObstacles(-speedOfObstacles, 0);
+        drawObstacles();
         detectCollisions();
         drawHearts();
         showScore();

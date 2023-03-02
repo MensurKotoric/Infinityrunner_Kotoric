@@ -3,7 +3,7 @@ const sensitivity = 20;
 function detectCollisions(){
     for(let i = 0; i < amountOfObstacles; i++){
         if(checkCollision(player.x - sensitivity,player.y - sensitivity,player.width - sensitivity,player.height - sensitivity,obstacles[i].x,obstacles[i].y,obstacles[i].width,obstacles[i].height)){
-            damageDetected();
+            manageHeart.damageDetected();
             genObstacleRandom(i, 800);
         }
     }

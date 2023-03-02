@@ -1,4 +1,4 @@
-class heart {
+class Heart {
     constructor(width, height, path, x, y)
     {
         this.width = width;

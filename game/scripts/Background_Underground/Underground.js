@@ -3,7 +3,7 @@ class underground {
     {
         this.width = width;
         this.height = height;
-        this.speedX = -speedOfObstacles;
+        this.speedX = manageObstacles.speedOfObstacles;
         this.speedY = 0;
         this.x = x;
         this.y = y;
@@ -16,7 +16,7 @@ class underground {
 
     }
     newPos() {
-        this.speedX = -speedOfObstacles;
+        this.speedX = -manageObstacles.speedOfObstacles;
         this.x += this.speedX;
         if (this.x <= -this.width + 30) {
             this.x = this.width - 30;

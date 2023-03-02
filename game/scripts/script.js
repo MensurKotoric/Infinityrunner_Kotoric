@@ -5,7 +5,6 @@ let myBackground;
 let underground1;
 let underground2;
 let scoreObj;
-let manageHearts;
 
 /**
  * Start the Game
@@ -14,14 +13,12 @@ function startGame() {
     gameArea.start();
     addKeyListener();
     initialGenerate(800);
-    //initialHearts();
+    initialHearts();
     player = new Player(100, 100, "styles/textures/Player_Run.png", playerPosX, 120);
     myBackground = new background(1870, 920, "styles/textures/background.jpg", 0, 0);
     underground1 = new underground(1870, 75, "styles/textures/textures_ground_v2.png", 0, 845);
     underground2 = new underground(1870, 75, "styles/textures/textures_ground_v2.png", 1850, 845);
     scoreObj = new score("30px", "Stencil", "white", 1670, 40, "text");
-    manageHearts = new ManageHearts(5,10,10,20,50,35, "styles/textures/heart.png");
-    manageHearts.initialHearts();
     player.update();
     updateForAnimation();
 }
@@ -117,7 +114,7 @@ function updateForAnimation() {
         moveObstacles(-speedOfObstacles, 0);
         drawObstacles();
         detectCollisions();
-        manageHearts.drawHearts();
+        drawHearts();
         showScore();
     } else {
         drawGameOverScreen();

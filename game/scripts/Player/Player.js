@@ -7,6 +7,10 @@ class Player {
     startJumping = false;
     loadJumpingImage = false;
     speed = 0;
+    debugVariables(){
+        console.log('isGrounded: ' + this.isGrounded + ' activateJumping:'  +this.activateJumping + ' spaceDown:' + this.spaceDown + ' spaceUpTemp:' + this.spaceUpTemp + ' startJumping:' +
+         this.startJumping + ' loadJumpingImage' + this.loadJumpingImage + ' speed: ' + this.speed);
+    }
     constructor(width, height, image, x, y, playerPosX,speed,jumpHeight,jumpSpeed,jumpXValue,defaultHeightOfPlayer) {
         this.x = x;
         this.y = y;
@@ -45,25 +49,5 @@ class Player {
         this.currentJump -= this.jumpSpeed;
         this.move(this.jumpXValue,this.currentJump);
     }
-    setCurrentJump(currentJump){
-        this.currentJump = currentJump;
-    }
-    setActivateJumping(activateJumping){
-        this.activateJumping = activateJumping;
-    }
-    setSpaceDown(spaceDown){
-        this.spaceDown = spaceDown;
-    }
-    setSpaceUpTemp(spaceUpTemp){
-        this.spaceUpTemp = spaceUpTemp;
-    }
-    setStartJumping(startJumping){
-        this.startJumping = startJumping;
-    }
-    setLoadJumpingImage(loadJumpingImage){
-        this.loadJumpingImage = loadJumpingImage;
-    }
-    setSpeed(speed){
-        this.speed = speed;
-    }
+
 }

@@ -63,7 +63,7 @@ function addKeyListener() {
                 break;
             case " ":
                 if (player.x < gameArea.canvas.width / 2) {
-                    player.setSpaceDown(true);
+                    player.spaceDown = true;
                 }
                 break;
         }
@@ -81,7 +81,7 @@ function addKeyListener() {
                 break;
             case " ":
                 if (player.x < gameArea.canvas.width / 2) {
-                    player.setSpaceUpTemp(true);
+                    player.spaceUpTemp = true;
                 }
                 break;
         }
@@ -102,14 +102,14 @@ function updateForAnimation() {
         // jumping
         if (player.activateJumping && player.spaceDown) {
             if (!player.loadJumpingImage) {
-                player.setLoadJumpingImage(true);
+                player.loadJumpingImage = true;
                 player.image.src = "styles/textures/Player_Jump.png";
-                player.setStartJumping(true);
+                player.startJumping = true;
             }
             // player reached jumpHeight
             if (player.y <= (gameArea.canvas.height - player.jumpHeight)) {
-                player.setCurrentJump(0);
-                player.setActivateJumping(false);
+                player.currentJump = 0;
+                player.activateJumping = false;
             }
             player.jump();
         } else {
@@ -121,6 +121,7 @@ function updateForAnimation() {
         manageObstacles.detectCollisions();
         manageHeart.drawHearts();
         showScore();
+        player.debugVariables();
     } else {
         drawGameOverScreen();
         newGameButtonClicked();

@@ -6,6 +6,7 @@ let underground2;
 let scoreObj;
 let manageHeart;
 let manageObstacles;
+let gravity;
 
 /**
  * Start the Game
@@ -15,6 +16,7 @@ function startGame() {
     addKeyListener();
     //initialGenerate(800);
     manageObstacles = new ManageObstacles(3,50,150,800,795, 4, 10);
+    gravity = new Gravity(2);
     player = new Player(100, 100, "styles/textures/Player_Run.png", 300, 120,300,3,350,2,10,75);
     myBackground = new background(1870, 920, "styles/textures/background.jpg", 0, 0);
     underground1 = new underground(1870, 75, "styles/textures/textures_ground_v2.png", 0, 845);
@@ -111,15 +113,12 @@ function updateForAnimation() {
             }
             player.jump();
         } else {
-            gravityMovement();
+            gravity.performGravity();
         }
         player.update();
         manageObstacles.moveObstacles();
-        //moveObstacles(-speedOfObstacles, 0);
-        //drawObstacles();
         manageObstacles.drawObstacles();
         manageObstacles.detectCollisions();
-        //detectCollisions();
         manageHeart.drawHearts();
         showScore();
     } else {

@@ -6,6 +6,7 @@ class Player {
     spaceUpTemp = false;
     startJumping = false;
     loadJumpingImage = false;
+    speed = 0;
     constructor(width, height, image, x, y, playerPosX,speed,jumpHeight,jumpSpeed,jumpXValue,defaultHeightOfPlayer) {
         this.x = x;
         this.y = y;
@@ -61,5 +62,8 @@ class Player {
     }
     setLoadJumpingImage(loadJumpingImage){
         this.loadJumpingImage = loadJumpingImage;
+    }
+    setSpeed(speed){
+        this.speed = speed;
     }
 }

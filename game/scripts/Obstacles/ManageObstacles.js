@@ -98,7 +98,7 @@ class ManageObstacles {
         // change the speed of the player and of the obstacles regarding of the "counterOfObstacles".
         if (this.counterOfObstacles % 30 == 0) {
             this.speedOfObstacles += this.counterOfObstacles / 15;
-            speed += this.counterOfObstacles / 15 - 1;
+            player.setSpeed(this.counterOfObstacles / 15 - 1);
         }
     }
     drawObstacles(){

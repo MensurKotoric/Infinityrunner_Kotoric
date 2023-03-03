@@ -20,7 +20,6 @@ class Gravity {
             // enable jumping
             if (player.spaceUpTemp) {
                 player.spaceUpTemp = false;
-                player.spaceDown = false;
                 player.activateJumping = true;
             }
         }

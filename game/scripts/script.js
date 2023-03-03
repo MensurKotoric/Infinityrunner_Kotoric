@@ -121,7 +121,6 @@ function updateForAnimation() {
         manageObstacles.detectCollisions();
         manageHeart.drawHearts();
         showScore();
-        player.debugVariables();
     } else {
         drawGameOverScreen();
         newGameButtonClicked();

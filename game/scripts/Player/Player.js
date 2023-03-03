@@ -46,9 +46,6 @@ class Player {
     setCurrentJump(currentJump){
         this.currentJump = currentJump;
     }
-    setIsGrounded(isGrounded){
-        this.isGrounded = isGrounded;
-    }
     setActivateJumping(activateJumping){
         this.activateJumping = activateJumping;
     }

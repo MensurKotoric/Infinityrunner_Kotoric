@@ -9,11 +9,7 @@ function gravityMovement() {
     // check if the player is grounded
     if (player.y + player.height + currentGravity >= gameArea.canvas.height - player.defaultHeightOfPlayer) {
         currentGravity = 0;
-        /*
-        if (!aDown && !dDown) {
-            player.image.src = "styles/textures/Player_Stand.png";
-        }*/
-        loadJumpingImage = false;
+        player.setLoadJumpingImage(true);
         // reset the position of the player to the start position after a jump.
         if(player.startJumping){
             if(player.x >= player.playerPosX - player.speed){

@@ -1,6 +1,5 @@
 let player; // store the player object
 let animation; // store the animation
-let loadJumpingImage = false;
 let myBackground;
 let underground1;
 let underground2;
@@ -100,8 +99,8 @@ function updateForAnimation() {
         underground2.update();
         // jumping
         if (player.activateJumping && player.spaceDown) {
-            if (!loadJumpingImage) {
-                loadJumpingImage = true;
+            if (!player.loadJumpingImage) {
+                player.setLoadJumpingImage(true);
                 player.image.src = "styles/textures/Player_Jump.png";
                 player.setStartJumping(true);
             }

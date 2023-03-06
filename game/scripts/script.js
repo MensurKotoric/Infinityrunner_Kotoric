@@ -7,6 +7,7 @@ let scoreObj;
 let manageHeart;
 let manageScore;
 let manageObstacles;
+let gameOverScreen;
 let gravity;
 
 /**
@@ -24,6 +25,7 @@ function startGame() {
     underground2 = new underground(1870, 75, "styles/textures/textures_ground_v2.png", 1850, 845);
     scoreObj = new score("30px", "Stencil", "white", 1670, 40, "text");
     manageHeart = new ManageHearts(5,10,10,20,50,35, "styles/textures/heart.png");
+    gameOverScreen = new GameOverScreen();
     manageScore = new ManageScore();
     manageHeart.initialHearts();
     player.update();
@@ -124,8 +126,8 @@ function updateForAnimation() {
         manageHeart.drawHearts();
         manageScore.showScore();
     } else {
-        drawGameOverScreen();
-        newGameButtonClicked();
+        gameOverScreen.drawGameOverScreen();
+        gameOverScreen.newGameButtonClicked();
     }
 
     animation = window.requestAnimationFrame(updateForAnimation);

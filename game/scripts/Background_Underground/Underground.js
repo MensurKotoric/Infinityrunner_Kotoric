@@ -1,4 +1,4 @@
-class underground {
+class Underground {
     constructor(width, height, path, x, y)
     {
         this.width = width;

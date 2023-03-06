@@ -11,9 +11,9 @@ class Game {
         this.player = new Player(100, 100, "styles/textures/Player_Run.png", 300, 120, 300, 3, 350, 2, 10, 75);
         this.score = new Score("30px", "Stencil", "white", 1670, 40, "text");
         this.gravity = new Gravity(2);
-        this.background = new background(1870, 920, "styles/textures/background.jpg", 0, 0);
-        this.underground1 = new underground(1870, 75, "styles/textures/textures_ground_v2.png", 0, 845);
-        this.underground2 = new underground(1870, 75, "styles/textures/textures_ground_v2.png", 1850, 845);
+        this.background = new Background(1870, 920, "styles/textures/background.jpg", 0, 0);
+        this.underground1 = new Underground(1870, 75, "styles/textures/textures_ground_v2.png", 0, 845);
+        this.underground2 = new Underground(1870, 75, "styles/textures/textures_ground_v2.png", 1850, 845);
         this.manageHeart = new ManageHearts(5, 10, 10, 20, 50, 35, "styles/textures/heart.png");
         this.manageObstacles = new ManageObstacles(3, 50, 150, 800, 795, 4, 10);
         this.gameOverScreen = new GameOverScreen();

@@ -11,6 +11,9 @@ If all Hearts are lost, there will be a game over frame with the highscore. So t
 The high score is being saved with local storage, which helps us to save the score with no expiration date, so the score will even be saved after closing the browser.
 The Player can be controlled by pressing "space" for jumping.
 
+## OOP UML Model
+![infintyrunner_uml.png](./infintyrunner_uml.png)
+
 
 ## Installation
 

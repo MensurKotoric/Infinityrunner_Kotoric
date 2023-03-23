@@ -1,4 +1,4 @@
-class Score extends LabelObjects {
+class Score extends LabelObject {
     constructor(x, y, text, color, font,game) {
         super(x, y, text, color, font,game);
         this.frameCounter = 0;

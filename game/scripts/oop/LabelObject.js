@@ -1,4 +1,4 @@
-class LabelObjects extends StandardObject {
+class LabelObject extends StandardObject {
     constructor(x, y,text,color,font,game) {
         super(x, y,'','','',game);
         this.text = text;

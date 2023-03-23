@@ -1,4 +1,4 @@
-class Player extends MovableObjects {
+class Player extends MovableObject {
     constructor(x, y, width, height, identifier, stepX, stepY,playerPosX,speed,jumpHeight,jumpSpeed,jumpXValue,defaultHeightOfPlayer,gravity,game) {
         super(x, y, width, height, identifier, stepX, stepY, game);
         this.currentJump = 0;

@@ -1,4 +1,4 @@
-class MovableObjects extends StandardObject {
+class MovableObject extends StandardObject {
     constructor(x, y, width, height, identifier, stepX, stepY, game) {
         super(x, y, width, height, identifier, game);
         this.stepX = stepX;

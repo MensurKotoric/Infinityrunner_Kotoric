@@ -1,131 +1,71 @@
-let player; // store the player object
-let animation; // store the animation
-let loadJumpingImage = false;
-let myBackground;
-let underground1;
-let underground2;
-let scoreObj;
-
-/**
- * Start the Game
- */
-function startGame() {
-    gameArea.start();
-    addKeyListener();
-    initialGenerate(800);
-    initialHearts();
-    player = new PlayerObject(100, 100, "styles/textures/Player_Run.png", playerPosX, 120);
-    myBackground = new background(1870, 920, "styles/textures/background.jpg", 0, 0);
-    underground1 = new underground(1870, 75, "styles/textures/textures_ground_v2.png", 0, 845);
-    underground2 = new underground(1870, 75, "styles/textures/textures_ground_v2.png", 1850, 845);
-    scoreObj = new score("30px", "Stencil", "white", 1670, 40, "text");
-    player.update();
-    updateForAnimation();
+function main() {
+    const game = new Game();
+    game.start();
 }
 
-/**
- *  Object of the game area.
- * @type {{canvas: HTMLCanvasElement, start: gameArea.start, clear: gameArea.clear}}
- */
-let gameArea = {
-    canvas: document.createElement("canvas"),
-    start: function () {
-        this.canvas.setAttribute("id", "frame");
+class Game {
+    constructor() {
+        this.gameOver = false;
+        this.canvas = document.createElement('canvas');
+        this.canvas.setAttribute('id', 'frame');
         this.canvas.width = 1870;
         this.canvas.height = 920;
-        this.context = this.canvas.getContext("2d");
+        this.context = this.canvas.getContext('2d');
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-    },
-    clear: function () {
+        this.player = new Player(300, 745, 100, 100, "player", 4, 0, 300, 3, 350, 3, 8, 75, 3, this);
+        this.score = new Score(1670, 40, "Score: ", "white", "30px Stencil", this);
+        this.background = new StandardObject(0, 0, 1870, 920, 'background', this);
+        this.ground1 = new MovableObject(0, 845, 1870, 75, 'ground', -3, 0, this);
+        this.ground2 = new MovableObject(1850, 845, 1870, 75, 'ground', -3, 0, this);
+        this.manageHeart = new ManageHearts(5, 10, 10, 20, 50, 35, this);
+        this.manageObstacles = new ManageObstacles(3, 50, 300, 800, 795, 4, 15, this);
+        this.gameOverScreen = new GameOverScreen(this);
+        this.manageObstacles.initialise();
+        this.manageHeart.initialHearts();
+        this.addKeyListener(this);
+    }
+
+    start() {
+        setInterval(() => this.updateForAnimation(), 20);
+    }
+
+    clear() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
-}
 
-/**
- * This Method implement a KeyListener
- */
-function addKeyListener() {
-    window.addEventListener("keydown", function (event) {
-        switch (event.key) {
-            case "d":
-                dDown = true;
-                break;
-            case "a":
-                aDown = true;
-                break;
-            case "s":
-                sDown = true;
-                break;
-            case " ":
-                if (player.x < gameArea.canvas.width / 2) {
-                    spaceDown = true;
-                }
-                break;
-        }
-    })
-    window.addEventListener("keyup", function (event) {
-        switch (event.key) {
-            case "d":
-                dDown = false;
-                break;
-            case "a":
-                aDown = false;
-                break;
-            case "s":
-                sDown = false;
-                break;
-            case " ":
-                if (player.x < gameArea.canvas.width / 2) {
-                    spaceUpTemp = true;
-                }
-                break;
-        }
-    })
-}
-
-/**
- * This function is used for the animation.
- */
-function updateForAnimation() {
-    gameArea.clear();
-    myBackground.update();
-    if (!gameOver) {
-        underground1.newPos();
-        underground2.newPos();
-        underground1.update();
-        underground2.update();
-        // jumping
-        if (activateJumping && spaceDown) {
-            if (!loadJumpingImage) {
-                loadJumpingImage = true;
-                player.image.src = "styles/textures/Player_Jump.png";
-                startJumping = true;
+    addKeyListener(game) {
+        window.addEventListener("keydown", function (event) {
+            if (event.key === " ") {
+                game.player.spaceDown = true;
             }
-            // player reached jumpHeight
-            if (player.y <= (gameArea.canvas.height - jumpHeight)) {
-                currentJump = 0;
-                activateJumping = false;
+        });
+        window.addEventListener("keyup", function (event) {
+            if (event.key === " ") {
+                game.player.spaceUpTemp = true;
             }
-            jump();
-        } else {
-            gravityMovement();
-        }
-        player.update();
-        moveObstacles(-speedOfObstacles, 0);
-        detectCollisions();
-        drawHearts();
-        showScore();
-    } else {
-        drawGameOverScreen();
-        newGameButtonClicked();
+        })
     }
 
-    animation = window.requestAnimationFrame(updateForAnimation);
-}
-
-/**
- * Stop the current animation
- */
-function stopAnimation() {
-    window.cancelAnimationFrame(animation);
+    updateForAnimation() {
+        this.clear();
+        this.background.update();
+        if (!this.gameOver) {
+            this.ground1.move();
+            this.ground2.move();
+            const leftSideObject = new StandardObject(-1865, 850, 5, 75, '');
+            if (this.ground1.checkCollision(leftSideObject)) {
+                this.ground1.x = this.ground1.width - 20;
+            }
+            if (this.ground2.checkCollision(leftSideObject)) {
+                this.ground2.x = this.ground2.width - 20;
+            }
+            this.player.movement();
+            this.manageObstacles.moveObstacles();
+            this.manageHeart.drawHearts();
+            this.score.show();
+        } else {
+            this.gameOverScreen.update();
+            this.gameOverScreen.buttonClicked();
+        }
+    }
 }

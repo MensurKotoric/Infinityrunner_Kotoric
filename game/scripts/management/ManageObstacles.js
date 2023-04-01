@@ -11,7 +11,7 @@ class ManageObstacles {
         this.counterOfObstacles = 0;
         this.game = game;
         this.min = offsetX;
-        this.max = offsetX + 200;
+        this.max = offsetX + this.game.canvas.width / 900;
     }
 
     initialise() {
@@ -52,7 +52,7 @@ class ManageObstacles {
                 }
             }
             if (this.min > this.max) {
-                this.max = this.game.canvas.width + 200;
+                this.max = this.game.canvas.width + this.game.canvas.width / 90;
             } else {
                 this.max = this.game.canvas.width;
             }

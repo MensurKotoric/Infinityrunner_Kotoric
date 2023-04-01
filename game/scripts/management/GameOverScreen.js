@@ -1,11 +1,11 @@
 class GameOverScreen {
     constructor(game) {
         this.game = game;
-        this.gameOverLabel = new LabelObject(this.game.canvas.width / 2 - 2 * this.game.canvas.width / 7, this.game.canvas.height / 2 - 200, "Game Over !!!", "white", "180px Stencil", this.game);
-        this.highScoreLabel = new LabelObject(this.game.canvas.width / 2 - this.game.canvas.width / 8, this.game.canvas.height / 2, "HighScore: ", "white", "120px Brush Script MT", this.game);
-        this.currentScoreLabel = new LabelObject(this.game.canvas.width / 2 - this.game.canvas.width / 6, this.game.canvas.height / 2 + this.game.canvas.height / 7, "CurrentScore: ", "white", "120px Brush Script MT", this.game);
-        this.newGameLabel = new LabelObject(this.game.canvas.width / 2 - 120, this.game.canvas.height - 180, "New Game", "white", "72px Brush Script MT", this.game);
-        this.roundRectangle = new StandardObject(this.game.canvas.width / 2 - 225, this.game.canvas.height - 300, 450, 200, '', this.game);
+        this.gameOverLabel = new LabelObject(this.game.canvas.width / 2 - 2 * this.game.canvas.width / 7, this.game.canvas.height / 2 - 2 * this.game.canvas.height / 9.2, "Game Over !!!", "white", 1.8 * this.game.canvas.height / 9.2 + "px Stencil", this.game);
+        this.highScoreLabel = new LabelObject(this.game.canvas.width / 2 - this.game.canvas.width / 8, this.game.canvas.height / 2, "HighScore: ", "white", 1.2 * this.game.canvas.height / 9.2 + "px Brush Script MT", this.game);
+        this.currentScoreLabel = new LabelObject(this.game.canvas.width / 2 - this.game.canvas.width / 6, this.game.canvas.height / 2 + this.game.canvas.height / 7, "CurrentScore: ", "white",  1.2 * this.game.canvas.height / 9.2 +"px Brush Script MT", this.game);
+        this.newGameLabel = new LabelObject(this.game.canvas.width / 2 - this.game.canvas.width / 13.5, this.game.canvas.height - this.game.canvas.height / 5, "New Game", "white", this.game.canvas.height / 12 + "px Brush Script MT", this.game);
+        this.roundRectangle = new StandardObject(this.game.canvas.width / 2 - this.game.canvas.width / 8.2, this.game.canvas.height - this.game.canvas.height / 3.066, this.game.canvas.width / 4.2, this.game.canvas.height / 4.6, '', this.game);
     }
 
     update() {
@@ -15,8 +15,8 @@ class GameOverScreen {
         this.highScoreLabel.update();
         this.currentScoreLabel.update();
         this.highScoreLabel.update();
-        this.roundRect(this.roundRectangle, 50, true);
-        this.roundRect(this.roundRectangle, 50, false);
+        this.roundRect(this.roundRectangle, this.game.canvas.height / 19, true);
+        this.roundRect(this.roundRectangle, this.game.canvas.height / 19, false);
         this.newGameLabel.update();
     }
 

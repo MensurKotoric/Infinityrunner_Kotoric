@@ -31,7 +31,7 @@ Also, the textures are separated.
 ![Overview2.png](./Overview2.png)
 
 ## Project status
-The project is still in progress.
+The project was completed
 
 ## Authors
 @5917010406 (Kotoric Mensur)<br>
